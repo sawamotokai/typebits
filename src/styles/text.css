@@ -1,0 +1,17 @@
+:root {
+  --safe-green: #63e0ae;
+  --warning-red: #ff0f0f;
+  --untyped: rgb(32, 32, 32);
+}
+
+.typed-wrong {
+  color: var(--warning-red);
+}
+
+.typed-right {
+  color: var(--safe-green);
+}
+
+.untyped {
+  color: var(--untyped);
+}
