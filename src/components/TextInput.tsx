@@ -5,13 +5,13 @@ import '../styles/text.css';
 import { isExpressionWithTypeArguments } from 'typescript';
 
 type props = {
-  target: string[],
+  targets: string[],
 }
 
-export default function TextInput({target, }: props) {
+export default function TextInput({targets, }: props) {
   const targetIdx = useRef<number>(0)
   const [typed, setTyped] = useState('')
-  const [untyped, setUntyped] = useState(target[0])
+  const [untyped, setUntyped] = useState(targets[0])
   const [typedRight, setTypedRight] = useState('')
   const [typedWrong, setTypedWrong] = useState('')
 
@@ -25,27 +25,27 @@ export default function TextInput({target, }: props) {
       setTypedRight('')
       setTypedWrong('')
       targetIdx.current++;
-      if (targetIdx.current === target.length) {
+      if (targetIdx.current === targets.length) {
         alert("Complete!")
         initTargets()
         targetIdx.current = 0
       }
-      setUntyped(target[targetIdx.current])
+      setUntyped(targets[targetIdx.current])
   }
 
   useEffect(() => {
-    if (typed === target[targetIdx.current]) {
+    if (typed === targets[targetIdx.current]) {
       goToNextTarget()
     }
   }, [typed])
 
   const updateTypedStates  = (str: string) => {
     setTyped(str)
-    let match: string = getMatch(str, target[targetIdx.current])
+    let match: string = getMatch(str, targets[targetIdx.current])
     setTypedRight(match)
-    let unmatch: string = target[targetIdx.current].slice(match.length, Math.min(str.length, target[targetIdx.current].length))
+    let unmatch: string = targets[targetIdx.current].slice(match.length, Math.min(str.length, targets[targetIdx.current].length))
     setTypedWrong(unmatch)
-    let rest: string = target[targetIdx.current].slice(str.length)
+    let rest: string = targets[targetIdx.current].slice(str.length)
     setUntyped(rest)
   }
 
@@ -62,7 +62,7 @@ export default function TextInput({target, }: props) {
     <div>
       <div>
         <ul style={{listStyleType: 'none'}}>
-          {target.map((str, id) => <li key={id}>{str}</li> )}
+          {targets.map((str, id) => <li key={id}>{str}</li> )}
         </ul>
       </div>
       <span className={"typed-right"}>{typedRight}</span>
