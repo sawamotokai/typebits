@@ -1,7 +1,18 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|PT+Mono);
+
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
 :root {
   --safe-green: #63e0ae;
   --warning-red: #ff0f0f;
   --untyped: rgb(32, 32, 32);
+}
+
+.code {
+  font-family:Lato, sans-serif;
 }
 
 .typed-wrong {

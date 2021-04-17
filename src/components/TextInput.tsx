@@ -13,7 +13,7 @@ type props = {
 }
 
 export default function TextInput() {
-  let targets: string[] = dataFromFile.words
+  let targets: string[] = dataFromFile.targets
   const targetIdx = useRef<number>(0)
   const [typed, setTyped] = useState('')
   const [untyped, setUntyped] = useState(targets[0])
@@ -66,13 +66,10 @@ export default function TextInput() {
   return (
     <div>
       <div>
-        <ul style={{listStyleType: 'none'}}>
-          {targets.map((str, id) => <li key={id}>{str}</li> )}
-        </ul>
+        <span className={"typed-right code"}>{typedRight}</span>
+        <span className={"typed-wrong code"}>{typedWrong}</span>
+        <span className={"untyped code"}>{untyped}</span>
       </div>
-      <span className={"typed-right"}>{typedRight}</span>
-      <span className={"typed-wrong"}>{typedWrong}</span>
-      <span className={"untyped"}>{untyped}</span>
       <br></br>
       <TextField multiline autoFocus value={typed} onChange={handleType} id="outlined-basic" variant="outlined" />
     </div>

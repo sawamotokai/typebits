@@ -4,6 +4,8 @@ import { FirebaseContext, } from '../contexts/FirebaseContext'
 import { useAuthState, } from 'react-firebase-hooks/auth'
 import SignIn from '../components/SignIn'
 import {Button} from '@material-ui/core'
+import Main from './Main'
+import '../styles/text.css'
 
 export default function Home() {
   const {auth, } = useContext(FirebaseContext)
@@ -17,8 +19,8 @@ export default function Home() {
 
   return (
     <div>
-      <h1>HOME</h1> 
-      {user ? <TextInput/> : <SignIn />}
+      <h1>Typebits</h1> 
+      {user ? <Main/> : <SignIn />}
       <br></br>
       {signOut()}
     </div>
