@@ -2,13 +2,18 @@ import React, { useEffect, useState, useRef } from 'react'
 import TextField from '@material-ui/core/TextField'
 import { getMatch, } from '../utils/textInputUtils'
 import '../styles/text.css';
-import { isExpressionWithTypeArguments } from 'typescript';
+import * as dataFromFile from '../cpp.json'
+
+type dictionary = {
+  words: string[],
+}
 
 type props = {
   targets: string[],
 }
 
-export default function TextInput({targets, }: props) {
+export default function TextInput() {
+  let targets: string[] = dataFromFile.words
   const targetIdx = useRef<number>(0)
   const [typed, setTyped] = useState('')
   const [untyped, setUntyped] = useState(targets[0])
