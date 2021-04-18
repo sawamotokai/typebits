@@ -4,6 +4,8 @@
 .target-container {
   border-radius:  5px;
   background-color: gainsboro;
+  max-width: 80vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

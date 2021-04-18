@@ -65,7 +65,7 @@ export default function TextInput() {
   
   return (
     <div>
-      <div>
+      <div id="typed">
         <span className={"typed-right code"}>{typedRight}</span>
         <span className={"typed-wrong code"}>{typedWrong}</span>
         <span className={"untyped code"}>{untyped}</span>

@@ -2,11 +2,23 @@ import React from 'react'
 import TextInput from '../components/TextInput'
 import TargetStrings from '../components/TargetStrings'
 import * as codeData from '../cpp.json'
+import { FirebaseContext, } from '../contexts/FirebaseContext'
+import {useCollectionData} from 'react-firebase-hooks/firestore'
+import '../styles/page.css'
 
 export default function Main() {
   const targets = codeData.targets
+  const {firestore, } = React.useContext(FirebaseContext)
+
+  const codesRef = firestore.collection('codes')
+  // const query = codesRef.where('lang', '==', 'cpp')
+  const query = codesRef;
+
+  const [codes] = useCollectionData(query)
+  console.log(codes)
+
   return (
-    <div>
+    <div className={`page`} id={`main-page`} >
       <TargetStrings targets={targets}></TargetStrings>
       <TextInput/>
     </div>
