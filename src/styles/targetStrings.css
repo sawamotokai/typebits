@@ -2,7 +2,8 @@
 @color-3rd: Gainsboro;
 
 .target-container {
-  border-radius:  5px;
+  border-radius:  1rem;
+  padding: 0.5rem;
   background-color: gainsboro;
   max-width: 80vw;
   width: 100%;
