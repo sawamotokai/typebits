@@ -1,6 +1,17 @@
-
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.target-container {
+  border-radius:  1rem;
+  padding: 0.5rem;
+  color: lightgrey;
+  background-color: rgb(252, 252, 224);
+  max-width: 80vw;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

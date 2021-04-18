@@ -1,4 +1,9 @@
-export const getMatch = (a: string, b: string) => {
+type getMatchType = (a: string, b: string) => string
+
+export const getMatch : getMatchType = (a: string, b: string) => {
+  if (!(a && b)) {
+    return "";
+  }
   if (a.length > b.length) {
     [a, b] = [b, a]
   }

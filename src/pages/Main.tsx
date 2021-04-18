@@ -1,6 +1,5 @@
 import React from 'react'
-import TextInput from '../components/TextInput'
-import TargetStrings from '../components/TargetStrings'
+import Game from '../components/organisms/Game'
 import * as codeData from '../cpp.json'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
@@ -19,8 +18,7 @@ export default function Main() {
 
   return (
     <div className={`page`} id={`main-page`} >
-      <TargetStrings targets={targets}></TargetStrings>
-      <TextInput/>
+      <Game targets={targets} />
     </div>
   )
 }

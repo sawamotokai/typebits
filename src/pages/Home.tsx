@@ -1,8 +1,7 @@
-import React, { createContext, useContext, } from 'react'
-import TextInput from '../components/TextInput'
+import React, { useContext, } from 'react'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
 import { useAuthState, } from 'react-firebase-hooks/auth'
-import SignIn from '../components/SignIn'
+import SignIn from '../components/organisms/SignIn'
 import {Button} from '@material-ui/core'
 import Main from './Main'
 import '../styles/text.css'
@@ -10,6 +9,7 @@ import '../styles/text.css'
 export default function Home() {
   const {auth, } = useContext(FirebaseContext)
   const [user] = useAuthState(auth)
+
   const signOut: () => void = () => {
     console.log(user)
     return auth.currentUser && (
