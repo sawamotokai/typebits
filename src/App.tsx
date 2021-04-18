@@ -2,12 +2,15 @@ import React from 'react';
 import './App.css';
 import Home from './pages/Home';
 import { FirebaseContextProvider, } from './contexts/FirebaseContext'
+import { AppContextProvider, } from './contexts/AppContext'
 
 function App() {
   return (
     <div className="App">
       <FirebaseContextProvider>
-        <Home></Home>
+        <AppContextProvider>
+          <Home></Home>
+        </AppContextProvider>
       </FirebaseContextProvider>
     </div>
   );
