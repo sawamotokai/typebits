@@ -9,7 +9,7 @@ export default () => {
   const {auth, } = React.useContext(FirebaseContext)
   const [user] = useAuthState(auth)
   return [
-      <Route key='home-route' exact path="/"> {auth.currentUser && user ? <Redirect to={`/user/${user.uid}`}/> : <Home />} </Route>,
+      <Route key='home-route' exact path="/"> {user ? <Redirect to={`/user/${user.uid}`}/> : <Home />} </Route>,
       <Route key='dashboard-route' exact path="/user/:uid" render={() => ( <Dashboard></Dashboard>)} />
   ]
 } 
