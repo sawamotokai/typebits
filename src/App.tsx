@@ -3,18 +3,37 @@ import './App.css';
 import { FirebaseContextProvider, } from './contexts/FirebaseContext'
 import { AppContextProvider, } from './contexts/AppContext'
 import RootRoutes from './routes/RootRoutes'
+import UserRoutes from './routes/UserRoutes'
+import GameRoutes from './routes/GameRoutes'
 import {Switch } from 'react-router-dom'
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 function App() {
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: [
+        'Montserrat',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif'
+      ].join(','),
+    }
+  });
+
   return (
     <div className="App">
-      <FirebaseContextProvider>
-        <AppContextProvider>
-          <Switch>
-            {RootRoutes()}
-          </Switch>
-        </AppContextProvider>
-      </FirebaseContextProvider>
+      <ThemeProvider theme={theme}>
+        <FirebaseContextProvider>
+          <AppContextProvider>
+            <Switch>
+              {RootRoutes()}
+              {UserRoutes()}
+              {GameRoutes()}
+            </Switch>
+          </AppContextProvider>
+        </FirebaseContextProvider>
+      </ThemeProvider>
     </div>
   )
 }
