@@ -17,32 +17,28 @@ type props = {
 }
 // const targets = codeData.targets
 
-export default function Main({useCustomCode}: props) {
+export default ({useCustomCode}: props) => {
   const {firestore, auth, } = React.useContext(FirebaseContext)
   const [user] = useAuthState(auth)
-  const user_id = user?.uid
+  const user_id = useCustomCode ? user?.uid : 'global'
   /**
    * Load data from firebase
    */
   let targets: string[] = []
   const codesRef = firestore.collection('codes')
-  let query;
-  if (useCustomCode) {
-    query = codesRef.where('uid', '==', user_id)
-  } else {
-    query = codesRef.where('lang', '==', 'cpp')
-  }
+  const query = codesRef.where('uid', '==', user_id)
+
   const [snapshot, loading, error] = useCollectionDataOnce<code>(query)
 
   if (snapshot) {
     targets = snapshot.map(data => data.text)
   }
 
-  return (
+  return user ? (
     <div className={`page`} id={`main-page`} >
       <h1>Typebits</h1>
       {!loading && <Game targets={targets} />}
       <SignOut></SignOut>
     </div>
-  )
+  ) : <></>
 }

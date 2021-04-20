@@ -1,10 +1,11 @@
 import React from 'react'
 import {Route, } from 'react-router-dom'
-import Dashboard from '../pages/Dashboard'
+import SnippsMenu from '../pages/SnippsMenu'
 
 export default () => {
   return [
-      // <Route key='dashboard-route' exact path="/game" render={() => ( <Dashboard></Dashboard>)} />,
-      // <Route key='dashboard-route' exact path="/user/:uid/codes/add" render={() => ( <Dashboard></Dashboard>)} />,
+      <Route key='dashboard-route' exact path="/user/snipps" render={() => ( <SnippsMenu></SnippsMenu>)} />,
+      // <Route key='dashboard-route' exact path="/user/snipps/new" render={() => ( <SnippsMenu></SnippsMenu>)} />,
+      // <Route key='dashboard-route' exact path="/user/snipps/edit" render={() => ( <SnippsMenu></SnippsMenu>)} />,
   ]
 } 

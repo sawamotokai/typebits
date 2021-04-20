@@ -20,15 +20,15 @@ export default () => {
 
   return user ? (
     <div id='dashboard-page' className='page'>
-      <h1>Typebits</h1> 
+      <h1>{`Hi, ${user.displayName}!`}</h1> 
       <div className="buttons">
         <div className={`game-option`}>
-          <p>Better user experience</p>
-          <Button> <Link to={`/game/custom`} style={{ textDecoration: 'none', color: 'black'}}> Use my own snippets (️recommended) </Link> </Button>
+          <p>New Snippets</p>
+          <Button onClick={() => {}}>New</Button>
         </div>
         <div className={`game-option`}>
-          <p>Quick start</p>
-          <Button> <Link to='/game/play' style={{ textDecoration: 'none', color: 'black' }}> Use pre-defined snippets </Link> </Button>
+          <p>Edit Snippets</p>
+          <Button onClick={() => {}}>Edit</Button>
         </div>
       </div>
       <SignOut></SignOut>

@@ -14,6 +14,10 @@ firebase.initializeApp({
 
 const auth = firebase.auth()
 const firestore = firebase.firestore()
+const perf = firebase.performance()
+const analytics = firebase.analytics()
+
+firestore.enablePersistence({synchronizeTabs: true})
 
 const contextValue = {
   firebase: firebase,

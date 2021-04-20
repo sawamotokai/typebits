@@ -21,3 +21,13 @@
   justify-content: flex-start;
   margin-bottom: 2rem;
 }
+
+#dashboard-page .game-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 2rem;
+  border: solid black 0.1rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
