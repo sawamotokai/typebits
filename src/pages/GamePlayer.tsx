@@ -5,7 +5,6 @@ import { FirebaseContext, } from '../contexts/FirebaseContext'
 import { useCollectionDataOnce, } from 'react-firebase-hooks/firestore'
 import { useAuthState, } from 'react-firebase-hooks/auth'
 import '../styles/page.css'
-import SignOut from '../components/organisms/SignOut'
 
 type code = {
   text: string,
@@ -36,9 +35,7 @@ export default ({useCustomCode}: props) => {
 
   return user ? (
     <div className={`page`} id={`main-page`} >
-      <h1>Typebits</h1>
       {!loading && <Game targets={targets} />}
-      <SignOut></SignOut>
     </div>
   ) : <></>
 }

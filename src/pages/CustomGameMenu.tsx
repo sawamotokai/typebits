@@ -7,12 +7,15 @@ import '../styles/page.css'
 export default () => {
   return (
     <div>
-      <div>
-        <Link to={'/user/snipps'}>Snippet Settings</Link>
-      </div>
-      <div className={`game-option`}>
-        <p>Improve Typing</p>
-        <Button> <Link to='/game/custom/play' style={{ textDecoration: 'none', color: 'black' }}>Start</Link> </Button>
+      <div className="sideways-container">
+        <div>
+          <p>Improve Typing 🚀</p>
+          <Link to={'/game/custom/play'}><Button color='primary' variant='contained'>Start</Button></Link>
+        </div>
+        <div>
+          <p>Create, Manage, Share your Snippets and more 🔧</p>
+          <Link to={'/user/snipps'}><Button color='default' variant='contained'>Snippet Settings</Button></Link>
+        </div>
       </div>
     </div>
   )

@@ -5,6 +5,7 @@ import { AppContextProvider, } from './contexts/AppContext'
 import RootRoutes from './routes/RootRoutes'
 import UserRoutes from './routes/UserRoutes'
 import GameRoutes from './routes/GameRoutes'
+import SignOut from './components/organisms/SignOut'
 import {Switch } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
@@ -41,6 +42,8 @@ function App() {
       <ThemeProvider theme={theme}>
         <FirebaseContextProvider>
           <AppContextProvider>
+            <h1>Typebits (beta)</h1>
+            <SignOut />
             <Switch>
               {RootRoutes()}
               {UserRoutes()}

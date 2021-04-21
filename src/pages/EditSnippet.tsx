@@ -6,6 +6,7 @@ import {Button} from '@material-ui/core'
 // import Error from './Error'
 import '../styles/text.css'
 import '../styles/page.css'
+import NewSnippetForm from '../components/organisms/NewSnippetForm'
 
 export default () => {
   const {auth, } = useContext(FirebaseContext)
@@ -18,18 +19,9 @@ export default () => {
   }, [])
 
   return user ? (
-    <div id='dashboard-page' className='page'>
-      <h3>{`Hi, ${user.displayName}!`}</h3> 
-      <div className="buttons">
-        <div className={`game-option`}>
-          <p>Create New Snippets</p>
-          <Link to='/user/snipps/new'><Button color='primary' variant='contained'>Create</Button></Link>
-        </div>
-        <div className={`game-option`}>
-          <p>Manage my Snippets</p>
-          <Link to='/user/snipps/edit'><Button color='primary' variant='outlined'>List</Button></Link>
-        </div>
-      </div>
+    <div id='new-snip' className='page'>
+      <h1>{`Hi, ${user.displayName}!`}</h1> 
+      <NewSnippetForm></NewSnippetForm>
       <br></br>
     </div>
   ) : <></>
