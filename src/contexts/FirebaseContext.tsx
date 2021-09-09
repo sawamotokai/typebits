@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import 'firebase/auth'
 import React, { createContext, } from 'react';
 
-firebase.initializeApp({
+const firebaseConfig = {
   apiKey: "AIzaSyDK2M3jCj4TC-xqznrGOY2lNw49R1k5GDU",
   authDomain: "typebits-f9a77.firebaseapp.com",
   projectId: "typebits-f9a77",
@@ -10,7 +10,11 @@ firebase.initializeApp({
   messagingSenderId: "694756133676",
   appId: "1:694756133676:web:c0e7af188c99d3c8affa89",
   measurementId: "G-RBM05YEDCZ"
-});
+}
+
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 const auth = firebase.auth()
 const firestore = firebase.firestore()
@@ -20,9 +24,9 @@ const analytics = firebase.analytics()
 firestore.enablePersistence({synchronizeTabs: true})
 
 const contextValue = {
-  firebase: firebase,
-  auth: auth,
-  firestore: firestore,
+  firebase,
+  auth,
+  firestore,
 }
 
 export const FirebaseContext = createContext(contextValue)

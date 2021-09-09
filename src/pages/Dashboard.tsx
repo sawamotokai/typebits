@@ -1,9 +1,9 @@
 import React, { useContext, } from 'react'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
 import { useAuthState, } from 'react-firebase-hooks/auth'
-import { Link } from "react-router-dom";
-import {Button} from '@material-ui/core'
-// import Error from './Error'
+import SelectLang from '../components/molecules/SelectLanguage';
+import { AppContext, } from '../contexts/AppContext';
+
 import '../styles/text.css'
 import '../styles/page.css'
 
@@ -18,18 +18,15 @@ export default () => {
   }, [])
 
   return user ? (
-    <div id='dashboard-page' className='page'>
-      <div className="buttons">
-        <div className={`game-option`}>
-          <p>Better user experience</p>
-          <Link to={`/game/custom`} ><Button> Use my own snippets (️recommended) </Button></Link> 
-        </div>
-        <div className={`game-option`}>
-          <p>Quick start</p>
-          <Link to='/game/play' ><Button> Use pre-defined snippets </Button></Link> 
-        </div>
-      </div>
-      <br></br>
+    <div id='dashboard-page' >
+      <div className="card card-1">
+        <h4>Practice Now</h4>
+        <SelectLang />
+      </div> 
+      <div className="card card-2">STATS</div> 
+      <div className="card card-3">SHARE</div> 
+      <div className="card card-4">LIST</div> 
+      <div className="card card-5">CREATE</div> 
     </div>
   ) : <></>
 }

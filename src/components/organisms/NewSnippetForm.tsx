@@ -2,6 +2,9 @@ import React from 'react'
 import {Button, InputLabel, FormHelperText, Input, FormControl, Select, MenuItem } from '@material-ui/core'
 import '../../styles/page.css'
 import { makeStyles } from '@material-ui/core/styles'
+import {FirebaseContext, } from '../../contexts/FirebaseContext'
+import { useAuthState } from 'react-firebase-hooks/auth'
+
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -16,11 +19,15 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+ 
+
 
 export default () => {
   const classes = useStyles()
+  const {firestore, auth } = React.useContext(FirebaseContext)
   const [snip, setSnip] = React.useState('')
   const [lang, setLang] = React.useState('cpp')
+  const [user] = useAuthState(auth)
 
   const handleLangChange = (event: React.ChangeEvent<{ value: unknown }>) => {
     setLang(event.target.value as string)
@@ -30,9 +37,25 @@ export default () => {
     setSnip(event.target.value)
   }
 
-  return (
+  const handleSubmit = () => {
+    const codesRef = firestore.collection('codes')
+    let ret = codesRef.add({
+      lang: lang,
+      text: snip,
+      uid: user?.uid,
+    }).then(res => {
+      console.log(res)
+      alert('New snippet added.')
+    }).catch(err => {
+      alert('Error happend. Snippet not added.')
+    })
+      setLang('')
+      setSnip('')
+  }
+
+  return user ? (
     <form id={'new-snippet-form'}>
-      <Input className={classes.input} required id="new-snippet-input"  aria-describedby="my-helper-text" onChange={handleSnipChange} />
+      <Input className={classes.input} value={snip} required id="new-snippet-input"  aria-describedby="my-helper-text" onChange={handleSnipChange} />
       <FormHelperText id="my-helper-text">Type whatever you want to use for typing practice</FormHelperText>
 
       <FormControl required className={classes.formControl}>
@@ -56,7 +79,7 @@ export default () => {
         </Select>
         <FormHelperText>Required</FormHelperText>
       </FormControl>
-      <Button color='primary' variant='contained' >Create</Button>
+      <Button color='primary' variant='contained' onClick={handleSubmit} >Create</Button>
     </form>
-  )
+  ) : <></>
 }

@@ -1,3 +1,31 @@
+:root {
+  --dark-bg-color: #454d58;
+  --primary-color: #f6f8f9;
+  --color-bg-low: #f7f8fa;
+  --color-bg-lower: #dfe0e2;
+  --color-border: #e2dfe9;
+  --color-bg: #fff;
+  --color-primary: #293070;
+  --color-primary-high: #38417e;
+  --color-primary-low: #22285d;
+  --color-primary-lower: #1b204b;
+  --color-highlight-negative: #fde0e3;
+  --color-highlight-negative-low: #fbc8cd;
+  --color-highlight-positive: #e0f7ea;
+  --color-highlight-positive-low: #ccf2dc;
+  --color-static-primary: #293070;
+  --color-static-primary-high: #3d4272;
+  --color-static-negative-high: #f57884;
+  --color-static-negative: #ef3143;
+  --color-static-negative-low: #ed192d;
+  --color-static-highlight: #ef3143;
+  --color-static-positive-high: #69dd9a;
+  --color-static-positive: #2ecc71;
+  --color-static-positive-low: #29b765;
+  --color-static-accent: #0bf;
+  --color-static-text-low: #a3a6b5;
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -5,7 +33,7 @@
 }
 
 .target-container {
-  border-radius:  1rem;
+  border-radius: 1rem;
   padding: 0.5rem;
   color: lightgrey;
   background-color: rgb(252, 252, 224);
@@ -41,14 +69,54 @@ form {
   align-items: center;
 }
 
-.sideways-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-end;
+#dashboard-page {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(240px, 1fr));
+  padding: 2rem;
+  grid-template-rows: repeat(10, minmax(5px, 6.3vh));
+  background-color: var(--color-bg-low);
+  /* padding-top: 3rem; */
 }
 
-.sideways-container div {
-  margin: 0 2rem;
-  width: 15rem;
+.card-1 {
+  grid-row: 1 / span 4;
+}
+
+.card-2 {
+  grid-row: 5 / span 5;
+}
+
+.card-3 {
+  grid-row: 10 / 11;
+}
+
+.card-4 {
+  grid-row: 1 / span 6;
+  grid-column: 2 / 3;
+}
+
+.card-5 {
+  grid-row: 7 / 11;
+  grid-column: 2 / 3;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+  font-size: 3rem;
+  color: var(--secondary-color);
+  box-shadow: rgba(3, 8, 20, 0.1) 0px 0.1rem 0.3rem,
+    rgba(2, 8, 20, 0.1) 0px 0.025rem 0.135rem;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
+  transition: all 500ms;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
