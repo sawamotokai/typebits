@@ -15,5 +15,13 @@
 }
 
 .navbar-title {
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.1rem;
+}
+
+.sign-in-btn img {
+  width: 2rem;
+}
+
+.sign-in-btn {
+  margin: 1rem;
 }

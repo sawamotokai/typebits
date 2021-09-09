@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default () => {
+export default function SignOut() {
   const {auth, } = useContext(FirebaseContext)
   const [user] = useAuthState(auth)
   const classes = useStyles()
@@ -25,6 +25,6 @@ export default () => {
     <Button onClick={() => {
       auth.signOut()
       window.location.href = '/'
-    }} variant={'outlined'} color={'default'} className={classes.button} >Sign Out</Button>
+    }} variant={'outlined'} color={'default'} className={classes.button}>Sign Out</Button>
   ) : <></>
 }

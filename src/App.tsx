@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css';
 import { FirebaseContextProvider, } from './contexts/FirebaseContext'
 import { AppContextProvider, } from './contexts/AppContext'
 import RootRoutes from './routes/RootRoutes'
 import UserRoutes from './routes/UserRoutes'
 import GameRoutes from './routes/GameRoutes'
 import SignOut from './components/organisms/SignOut'
+import AuthCheck from './components/organisms/AuthCheck';
 import NavBar from './components/organisms/NavBar'
 import {Switch } from 'react-router-dom'
 import { createMuiTheme } from '@material-ui/core/styles';
@@ -16,6 +16,7 @@ function App() {
   const theme = createMuiTheme({
     typography: {
       fontFamily: [
+        'Noto Sans',
         'Montserrat',
         '"Helvetica Neue"',
         'Arial',

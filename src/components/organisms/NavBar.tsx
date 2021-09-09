@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/components.css'
 import SignOut from './SignOut';
 
-export default function EditSnippet() {
+export default function Navbar() {
   return (
     // make navbar
     <nav className="navbar">

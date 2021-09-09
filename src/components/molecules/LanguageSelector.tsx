@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function SelectLanguage() {
+export default function LanguageSelector() {
   const classes = useStyles();
   const [lang, setLang] = React.useState('');
   const { languages, setLanguages } = React.useContext(AppContext);
