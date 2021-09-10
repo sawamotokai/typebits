@@ -6,5 +6,6 @@ import CustomGameMenu from '../pages/CustomGameMenu'
 
 export default () => {
   return [
+    <Route key={'game-route'} exact path={'/game/:lang'} render={() => <GamePlayer />} />
   ]
 } 

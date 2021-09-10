@@ -3,18 +3,38 @@ import TextField from '@material-ui/core/TextField'
 import '../../styles/text.css'
 import { AppContext } from '../../contexts/AppContext'
 import Typing from '../molecules/Typing'
+import {shuffle} from '../../utils/utils'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    width: '100%',
+  }
+}));
 
 type props = {
   targets: string[],
 }
 
-export default ({targets, } :props) => {
+export default (props :props) => {
   const {targetIdx, setTargetIdx} = useContext(AppContext)
+  const [targets, setTargets] = useState(props.targets)
   const [typed, setTyped] = useState('')
+  const classes = useStyles()
 
   useEffect(() => {
     if (targetIdx === targets.length) {
-      alert("Complete!")
+      // toast.success('🦄 Wow so easy!', {
+      //   position: "top-right",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   });
       initTargets()
     }
   }, [targetIdx])
@@ -27,6 +47,8 @@ export default ({targets, } :props) => {
 
   const initTargets: () => void = () => {
     // TODO: 
+    // shuffle targets arrray
+    setTargets(shuffle(targets))
     setTargetIdx(0)
   }
 
@@ -57,7 +79,7 @@ export default ({targets, } :props) => {
       {targetIdx < targets.length && <Typing typed={typed} target={targets[targetIdx]} />}
       <span className={`code`}>{getNextString()}</span>
       <br/>
-      <TextField multiline autoFocus value={typed} onChange={handleType} id="outlined-basic" variant="outlined" />
+      <TextField className={classes.button} multiline autoFocus value={typed} onChange={handleType} id="code-field" variant="outlined" />
     </div>
   )
 }

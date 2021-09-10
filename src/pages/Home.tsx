@@ -1,14 +1,12 @@
 import React, { useContext, } from 'react'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
-import { useAuthState, } from 'react-firebase-hooks/auth'
 import {Button} from '@material-ui/core'
 import '../styles/text.css'
 import Dashboard from './Dashboard'
+import useUserData from '../hooks/useUserData'
 
 export default function Home() {
-  const {auth, } = useContext(FirebaseContext)
-  const [user] = useAuthState(auth)
-
+  const user = useUserData()
   return (
     <main>
       { user ? <Dashboard /> : <SignInButton /> }

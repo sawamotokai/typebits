@@ -1,41 +1,52 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { useParams } from 'react-router'
+import firebase from "firebase/app"
+
 import Game from '../components/organisms/Game'
-// import * as codeData from '../cpp.json'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
-import { useCollectionDataOnce, } from 'react-firebase-hooks/firestore'
-import { useAuthState, } from 'react-firebase-hooks/auth'
+import useUserData from '../hooks/useUserData'
 import '../styles/page.css'
+import AuthCheck from '../components/organisms/AuthCheck'
+import Loader from '../components/atoms/Loader'
 
-type code = {
-  text: string,
-  lang: string,
+type paramsType = {
+  lang: string
 }
 
-type props = {
-  useCustomCode: boolean
-}
-// const targets = codeData.targets
-
-export default ({useCustomCode}: props) => {
-  const {firestore, auth, } = React.useContext(FirebaseContext)
-  const [user] = useAuthState(auth)
-  const user_id = useCustomCode ? user?.uid : 'global'
-  /**
-   * Load data from firebase
-   */
+async function loadSnipsFromDB(lang: string, user: firebase.User | null | undefined, firestore: firebase.firestore.Firestore) {
+  if (!user) return []
   let targets: string[] = []
-  const codesRef = firestore.collection('codes')
-  const query = codesRef.where('uid', '==', user_id)
-
-  const [snapshot, loading, error] = useCollectionDataOnce<code>(query)
-
-  if (snapshot) {
-    targets = snapshot.map(data => data.text)
+  let snapshot = await firestore.collection('shared-codes').where('lang', '==', lang).get()
+  snapshot.docs.forEach((doc: any) => targets.push(doc.data().text))
+  snapshot = await firestore.collection('users').where('uid', '==', user?.uid).limit(1).get()
+  if (snapshot.docs.length) {
+    const userRef = snapshot.docs[0].ref
+    const langSnapshot = await userRef.collection('languages').where('name', '==', lang).limit(1).get()
+    if (langSnapshot.docs.length) {
+      const codesRef = langSnapshot.docs[0].ref.collection('codes')
+      const codesSnapshot = await codesRef.get()
+      codesSnapshot.docs.forEach((doc: any) => targets.push(doc.data().text))
+    }
   }
+  return targets
+}
 
-  return user ? (
-    <div className={`page`} id={`main-page`} >
-      {!loading && <Game targets={targets} />}
-    </div>
-  ) : <></>
+export default function GamePlayer() {
+  const { lang } = useParams<paramsType>();
+  const user = useUserData()
+  const {firestore} = useContext(FirebaseContext)
+  const [loading, setLoading] = useState(true)
+  const [targets, setTarget] = useState<string[]>([])
+  loadSnipsFromDB(lang, user, firestore).then((ret) => {
+    setTarget(ret)
+    setLoading(false)
+  })
+
+  return (
+    <AuthCheck>
+      <main className={`page`} id={`main-page`} >
+        {(loading || targets.length === 0 ) ? <Loader show={loading} /> : <Game targets={targets} />}
+      </main>
+    </AuthCheck>
+  )
 }

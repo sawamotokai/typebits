@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { AppContext } from '../../contexts/AppContext';
+
+type props = {
+  options: string[] | undefined[],
+  state: string | undefined,
+  setState: React.Dispatch<React.SetStateAction<any>>, 
+  label: string,
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -17,10 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function LanguageSelector() {
+export default function Selector(props: props) {
   const classes = useStyles();
-  const [lang, setLang] = React.useState('');
-  const { languages, setLanguages } = React.useContext(AppContext);
+  const {options, state, setState, label} = props
 
   return (
     <div>
@@ -28,16 +34,16 @@ export default function LanguageSelector() {
         <InputLabel htmlFor="outlined-age-native-simple">Language</InputLabel>
         <Select
           native
-          value={lang}
-          onChange={(e: React.ChangeEvent<{ value: unknown }>) => setLang(e.target.value as string)}
-          label="Language"
+          value={state}
+          onChange={(e: React.ChangeEvent<{ value: unknown }>) => setState(e.target.value as string | undefined )}
+          label={label}
           inputProps={{
-            name: 'Language',
-            id: 'language',
+            name: label,
+            id: label,
           }}
         >
           <option aria-label="None" value="" />
-          {languages.map(lang => <option aria-label={lang} value={lang} />)}
+          {options.map((option: string | undefined) => <option aria-label={option} value={option}>{option}</option>)}
         </Select>
       </FormControl> 
     </div>

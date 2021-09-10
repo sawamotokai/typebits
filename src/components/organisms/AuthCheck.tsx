@@ -12,7 +12,5 @@ type propsType = {
 export default function AuthCheck(props: propsType) {
   const {auth, } = useContext(FirebaseContext)
   const [user] = useAuthState(auth)
-  console.log(user)
-
-  return user ? props.children : props.fallback || <a href={'/hi'} >You must be signed in. </a>
+  return user ? props.children : props.fallback || <Link to={'/'} >You must be signed in. </Link>
 }
