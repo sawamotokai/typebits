@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 320,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
@@ -29,8 +29,7 @@ export default function Selector(props: props) {
   const {options, state, setState, label} = props
 
   return (
-    <div>
-        <FormControl variant="outlined" className={classes.formControl}>
+      <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel htmlFor="outlined-age-native-simple">Language</InputLabel>
         <Select
           native
@@ -46,6 +45,5 @@ export default function Selector(props: props) {
           {options.map((option: string | undefined) => <option aria-label={option} value={option}>{option}</option>)}
         </Select>
       </FormControl> 
-    </div>
   )
 }

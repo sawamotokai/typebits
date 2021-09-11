@@ -7,6 +7,7 @@ import {shuffle} from '../../utils/utils'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {makeStyles } from '@material-ui/core/styles'
+import { snippet } from '../../utils/utils'
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -15,12 +16,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type props = {
-  targets: string[],
+  targets: snippet[],
 }
 
 export default (props :props) => {
   const {targetIdx, setTargetIdx} = useContext(AppContext)
-  const [targets, setTargets] = useState(props.targets)
+  const [targets, setTargets] = useState<snippet[]>(props.targets)
   const [typed, setTyped] = useState('')
   const classes = useStyles()
 
@@ -40,7 +41,7 @@ export default (props :props) => {
   }, [targetIdx])
 
   useEffect(() => {
-    if (typed === targets[targetIdx]) {
+    if (typed === targets[targetIdx].snip) {
       goToNextTarget()
     }
   }, [typed])
@@ -54,7 +55,7 @@ export default (props :props) => {
 
   const goToNextTarget: () => void = () => {
       setTyped('')
-      setTargetIdx(targetIdx + 1)
+      setTargetIdx((targetIdx + 1) % targets.length)
   }
 
   const handleType = (ev: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,14 +70,14 @@ export default (props :props) => {
 
   const getNextString: () => string = () => {
     if (targetIdx + 1 < targets.length) {
-      return targets[targetIdx + 1]
+      return targets[targetIdx + 1].snip
     }
     return "";
   }
   
   return (
     <div className={`target-container`}>
-      {targetIdx < targets.length && <Typing typed={typed} target={targets[targetIdx]} />}
+      {targetIdx < targets.length && <Typing typed={typed} target={targets[targetIdx].snip} />}
       <span className={`code`}>{getNextString()}</span>
       <br/>
       <TextField className={classes.button} multiline autoFocus value={typed} onChange={handleType} id="code-field" variant="outlined" />

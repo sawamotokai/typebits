@@ -15,12 +15,17 @@ export default function Home() {
 }
 
 function SignInButton() {
-  const {firebase, auth, } = React.useContext(FirebaseContext)
+  const {firebase, auth, firestore} = React.useContext(FirebaseContext)
 
   const signInWithGoogle: () => void = async () => {
     const provider = new firebase.auth.GoogleAuthProvider()
     try {
-      await auth.signInWithPopup(provider)
+      const result = await auth.signInWithPopup(provider)
+      const user = result.user
+      if (user && result.additionalUserInfo?.isNewUser) {
+        const ref = firestore.collection('users').doc(user.uid)
+        ref.set({email: user.email, displayName: user.displayName})
+      }
     } catch (e) {
       console.error(e)
       return e
