@@ -2,7 +2,6 @@ import React, { useContext, } from 'react'
 import { FirebaseContext, } from '../../contexts/FirebaseContext'
 import { useAuthState, } from 'react-firebase-hooks/auth'
 import { Link } from 'react-router-dom';
-import { AppContext, } from '../../contexts/AppContext';
 
 type propsType = {
   children: React.ReactElement,

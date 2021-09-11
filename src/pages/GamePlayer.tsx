@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { useParams } from 'react-router'
-import firebase from "firebase/app"
-
 import Game from '../components/organisms/Game'
 import { FirebaseContext, } from '../contexts/FirebaseContext'
 import useUserData from '../hooks/useUserData'

@@ -4,7 +4,6 @@ import '../../styles/text.css'
 import { AppContext } from '../../contexts/AppContext'
 import Typing from '../molecules/Typing'
 import {shuffle} from '../../utils/utils'
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {makeStyles } from '@material-ui/core/styles'
 import { snippet } from '../../utils/utils'
@@ -27,15 +26,6 @@ export default (props :props) => {
 
   useEffect(() => {
     if (targetIdx === targets.length) {
-      // toast.success('🦄 Wow so easy!', {
-      //   position: "top-right",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   });
       initTargets()
     }
   }, [targetIdx])

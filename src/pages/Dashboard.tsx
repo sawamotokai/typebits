@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import AuthCheck from '../components/organisms/AuthCheck';
 import useUserData from '../hooks/useUserData';
 import Selector from '../components/molecules/Selector';
-import SnippetList from '../components/molecules/SnippetList';
+import SnippetList from '../components/organisms/SnippetList';
 import { AppContext, } from '../contexts/AppContext';
 import { FirebaseContext, } from '../contexts/FirebaseContext'
 

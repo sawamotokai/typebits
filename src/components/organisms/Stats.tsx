@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
-import {TextField, Button, } from '@material-ui/core'
-import Selector from '../molecules/Selector'
 import { AppContext } from '../../contexts/AppContext';
 import {FirebaseContext } from '../../contexts/FirebaseContext';
 import useUserData from '../../hooks/useUserData';
 import { Doughnut } from 'react-chartjs-2';
-import Loader from '../atoms/Loader';
 import { loadAllSnipsFromDB, snippet } from '../../utils/utils';
 import randomColor from 'randomcolor'
 
