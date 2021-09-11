@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState, } from 'react'
-import { Button } from '@material-ui/core';
+import { Button, TextField } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 import AuthCheck from '../components/organisms/AuthCheck';
@@ -13,6 +13,8 @@ import '../styles/text.css'
 import '../styles/page.css'
 import '../styles/components.css'
 import { loadUserLanguages } from '../utils/utils';
+import CreateSnippet from '../components/organisms/CreateSnippet';
+import Stats from '../components/organisms/Stats';
 
 
 export default function Dashbaord() {
@@ -40,12 +42,16 @@ export default function Dashbaord() {
             <Link to={`/game/${lang}`} className={lang || 'disabled-link'}><Button variant={'contained'}>Start</Button></Link>
           </div>
         </div> 
-        <div className="card card-2">STATS</div> 
+        <div className="card card-2">
+          <Stats /> 
+        </div> 
         <div className="card card-3">SHARE</div> 
         <div className="card card-4">
           <SnippetList/>
         </div> 
-        <div className="card card-5">CREATE</div> 
+        <div className="card card-5">
+          <CreateSnippet />
+        </div> 
       </div>
     </AuthCheck>
   )

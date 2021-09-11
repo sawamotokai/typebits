@@ -72,3 +72,12 @@ export async function loadSnipsFromDB(lang: string, user: firebase.User | null |
   snapshot.docs.forEach((doc: any) => targets.push(({snip: doc.data().text, id: doc.id})))
   return targets
 }
+
+export async function loadAllSnipsFromDB(languages: string[], user: firebase.User | null | undefined, firestore: firebase.firestore.Firestore) {
+  const promises: Promise<snippet[]>[] = [];
+  for (let lang of languages) {
+    promises.push(loadSnipsFromDB(lang, user, firestore))
+  }
+  const ret: snippet[][] = await Promise.all(promises)
+  return ret
+}
