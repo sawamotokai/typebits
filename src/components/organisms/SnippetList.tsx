@@ -63,10 +63,10 @@ export default function SnippetList() {
           </Paper>
         }
         <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-          <Button disabled={toEdit.id === ''} onClick={handleEdit} variant="contained" color="primary" style={{width: '40%', marginTop: '1rem', }}>
+          <Button disabled={toEdit.id === ''} onClick={handleEdit} variant="contained" color="primary" style={{width: '40%', marginTop: '1rem', boxShadow: 'none'}}>
             Edit
           </Button>
-          <Button disabled={toEdit.id === ''} onClick={handleDelete} variant="contained" color="secondary" style={{width: '40%', marginTop: '1rem'}}>
+          <Button disabled={toEdit.id === ''} onClick={handleDelete} variant="contained" color="secondary" style={{width: '40%', marginTop: '1rem', boxShadow: 'none'}}>
             Delete
           </Button>
         </div>

@@ -9,9 +9,8 @@ import {makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme) => ({
   button: {
-    position: 'absolute',
-    top: '1rem',
-    right: '1rem',
+    height: '3rem',
+    boxShadow: 'none',
   }
 }));
 
@@ -24,6 +23,6 @@ export default function SignOut() {
     <Button onClick={() => {
       auth.signOut()
       window.location.href = '/'
-    }} variant={'outlined'} color={'default'} className={classes.button}>Sign Out</Button>
+    }} variant={'contained'} color={'default'} className={classes.button}>Sign Out</Button>
   ) : <></>
 }

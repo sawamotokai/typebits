@@ -20,7 +20,7 @@ function App() {
         'Arial',
         'sans-serif'
       ].join(','),
-    },
+    }, 
   })
 
   return (

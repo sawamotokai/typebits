@@ -39,7 +39,7 @@ export default function Dashbaord() {
           <p style={{fontSize: '2.5rem', position: 'absolute', top: '5rem'}}>Practice Typing</p>
           <div className={'start-menu'}>
             <Selector state={lang} setState={setLang} options={languages} label={'Language'} />
-            <Link to={`/game/${lang}`} className={lang || 'disabled-link'}><Button variant={'contained'}>Start</Button></Link>
+            <Link to={`/game/${lang}`} className={lang || 'disabled-link'}><Button style={{boxShadow: 'none'}} variant={'contained'}>Start</Button></Link>
           </div>
         </div> 
         <div className="card card-2">

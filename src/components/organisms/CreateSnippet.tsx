@@ -37,7 +37,7 @@ export default function CreateSnippet() {
           <form style={{border: 'none', marginBottom: '2rem', marginTop: '-1rem' }} noValidate autoComplete="off">
             <TextField style={{width: '20rem'}} id="new-snip" onChange={handleChange} />
             <div>
-              <Button disabled={sending} style={{margin: '1rem 0.1rem'}} onClick={handleSave} variant="contained" color="primary">Create</Button>
+              <Button disabled={sending} style={{margin: '1rem 0.1rem', boxShadow: 'none'}} onClick={handleSave} variant="contained" color="primary">Create</Button>
             </div>
           </form>
         </div>

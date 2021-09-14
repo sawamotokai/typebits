@@ -8,6 +8,7 @@ import randomColor from 'randomcolor'
 
 export default function Stats() {
   const {languages} = useContext(AppContext)
+  console.log(languages)
   const {firestore} = useContext(FirebaseContext)
   const [data, setData] =  useState({
     labels: languages,
@@ -24,7 +25,7 @@ export default function Stats() {
     loadAllSnipsFromDB(languages, user, firestore).then((snippetArrays: snippet[][]) => {
       const counts = snippetArrays.map((snippets: snippet[]) => snippets.length)
       setData({
-        ...data,
+        labels: languages,
         datasets: [{
           ...data.datasets[0],
           data: counts,
