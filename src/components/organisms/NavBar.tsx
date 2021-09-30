@@ -1,15 +1,14 @@
 import React from 'react'
 import '../../styles/components.css'
 import SignOut from './SignOut';
+import SignIn from './SignIn';
 import useUserData from '../../hooks/useUserData';
 
 
 export default function Navbar() {
   const user = useUserData()
   return (
-    // make navbar
     <nav id="navbar">
-      {/* <Link to="/"> */}
       <img id="navbar-title" src={'/header.png'} />
       {user ? 
         <div id="navbar-profile">
@@ -18,9 +17,8 @@ export default function Navbar() {
             <img id="navbar-icon" src={`https://avatars.dicebear.com/api/bottts/${user.email}.svg`} />
           </div>
         </div>
-      : <></>
+      : <SignIn />
       }
-      {/* </Link> */}
     </nav>
   )
 }

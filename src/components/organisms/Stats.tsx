@@ -34,7 +34,6 @@ export default function Stats() {
     })
   }, [])
 
-
   return (
     <div className="stats" style={{width: '48%'}}>
       <Doughnut data={data} width={10} height={10} />

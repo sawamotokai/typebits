@@ -45,7 +45,15 @@ export default function Dashbaord() {
         <div className="card card-2">
           <Stats /> 
         </div> 
-        <div className="card card-3">SHARE</div> 
+        <div className="card card-3">
+          <div className="flex-container-row " id="icon-container">
+            <i className="fas fa-paperclip fa-xs"></i>
+            <i className="fab fa-twitter-square fa-xs"></i>
+            <i className="fab fa-instagram-square fa-xs"></i>
+            <i className="fab fa-facebook-square fa-xs"></i>
+            <i className="fab fa-facebook-messenger fa-xs"></i>
+          </div>
+        </div> 
         <div className="card card-4">
           <SnippetList/>
         </div> 
