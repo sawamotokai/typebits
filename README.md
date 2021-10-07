@@ -1,8 +1,7 @@
-# 👾 Typebits 👾 https://typebits.vercel.app/
+# 👾 [Typebits](https://typebits.vercel.app/) 👾
 
 _This is a web app to practice typing, designed specifically for programmers.
 You can add your own code snippets, with which you can practice typing or just warm up your fingers before getting into your work._
-
 
 ## 💻 Tech Stack
 
@@ -18,5 +17,4 @@ You can add your own code snippets, with which you can practice typing or just w
 ## TODO
 
 - In the dashboard, I want to see a little summary or stats of how much I practiced
-- I want to be able to use somebody else's snippets
 - Japanese content
