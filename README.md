@@ -1,7 +1,8 @@
-# 👾 Typebits 👾
+# 👾 Typebits 👾 https://typebits.vercel.app/
 
-This is a web app to practice typing, designed specifically for programmers.
-You can add your own code snippets, with which you can practice typing or just warm up your fingers before getting into your work.
+_This is a web app to practice typing, designed specifically for programmers.
+You can add your own code snippets, with which you can practice typing or just warm up your fingers before getting into your work._
+
 
 ## 💻 Tech Stack
 
